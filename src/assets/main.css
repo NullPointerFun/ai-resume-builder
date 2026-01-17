@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+}
+
+.experience-card {
+  @apply relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md shadow-[0_0_25px_rgba(15,23,42,0.8)] transition-all duration-300 ease-out;
+}
+
+.experience-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: radial-gradient(circle at top left, rgba(45,212,191,0.55), transparent 55%)
+    border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  pointer-events: none;
+}
+
+.experience-card:hover {
+  box-shadow: 0 0 28px rgba(45, 212, 191, 0.55);
+  transform: translateY(-2px);
+}
+
+.experience-card:hover::before {
+  opacity: 1;
+}
+
+.tag-chip {
+  @apply rounded-full border border-slate-700/80 bg-slate-900/80 px-3 py-1 text-slate-200;
+}
+
+.ai-skill-matrix {
+  background-size: 200% 200%;
+  animation: gradient-x 10s ease infinite;
+}
+
+.ai-skill-pill {
+  @apply relative overflow-hidden rounded-xl border border-slate-700/80 bg-slate-900/80 p-4;
+  transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.ai-skill-pill::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(circle at top left, rgba(52,211,153,0.6), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  pointer-events: none;
+}
+
+.ai-skill-pill:hover::before {
+  opacity: 1;
+}
+
+.ai-skill-pill:hover {
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.45);
+  transform: translateY(-1px);
+}
+
+.theme-violet .ai-skill-pill::before {
+  background: radial-gradient(circle at top left, rgba(139,92,246,0.6), transparent 55%);
+}
+
+.theme-cyan .ai-skill-pill::before {
+  background: radial-gradient(circle at top left, rgba(34,211,238,0.6), transparent 55%);
+}
+
+.theme-emerald .experience-card:hover {
+  box-shadow: 0 0 28px rgba(16, 185, 129, 0.55);
+}
+
+.theme-violet .experience-card:hover {
+  box-shadow: 0 0 28px rgba(139, 92, 246, 0.6);
+}
+
+.theme-cyan .experience-card:hover {
+  box-shadow: 0 0 28px rgba(34, 211, 238, 0.6);
+}
+
+.no-print {
+  @apply print:hidden;
+}
+
+.print-page {
+  @apply print:shadow-none;
+}
+
+@keyframes gradient-x {
+  0% {
+    background-image: linear-gradient(
+      120deg,
+      rgba(16, 185, 129, 0.15),
+      rgba(56, 189, 248, 0.15),
+      rgba(129, 140, 248, 0.15)
+    );
+    background-position: 0% 50%;
+  }
+  50% {
+    background-image: linear-gradient(
+      120deg,
+      rgba(129, 140, 248, 0.18),
+      rgba(16, 185, 129, 0.18),
+      rgba(56, 189, 248, 0.18)
+    );
+    background-position: 100% 50%;
+  }
+  100% {
+    background-image: linear-gradient(
+      120deg,
+      rgba(16, 185, 129, 0.15),
+      rgba(56, 189, 248, 0.15),
+      rgba(129, 140, 248, 0.15)
+    );
+    background-position: 0% 50%;
+  }
+}
